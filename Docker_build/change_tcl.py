@@ -1,6 +1,15 @@
 import sys
+import os
+from pathlib import Path
 
-param1, param2 = int(sys.argv[1]), int(sys.argv[2])
+logs_path = Path(os.environ['LOGS_DIR'])
+input_file = logs_path / "input.txt"
+if not input_file.exists:
+	raise Exception("No input file {}". format(logs_path / "input.txt"))
+
+with open(input_file, "r") as f:
+	param1, param2 = f.readline().split()
+
 temp1, temp2 = (727.2 * 2) / param1, (969.6 * 2) / param2
 fname = './Gauss/Sim/LbDelphes/options/cards/delphes_card_LHCb_EndVelo_Rich2_withEcal.tcl'
 

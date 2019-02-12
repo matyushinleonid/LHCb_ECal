@@ -3,6 +3,11 @@
 import uproot as uproot
 import numpy as np
 import pandas as pd
+import os
+from pathlib import Path
+
+logs_path = Path(os.environ['LOGS_DIR'])
+output_file = logs_path / "output.txt"
 
 data_pGUN = uproot.open('GaussTuple_30000000.root')['DelphesTuple']['Res'].pandas.df()
 
@@ -30,6 +35,9 @@ def get_std(data, border_modules=1):
     df = get_section(data, sec_name, border_modules=border_modules)
 
     arr = df.xRec - df.xGen - df.thetaXGen * (df.zRec)
-    return arr.std()
+    res = arr.std()
+    with open(output_file, "w+") as f:
+        f.write(str(res))
+    return res
         
 print(get_std(data_pGUN, border_modules=1))

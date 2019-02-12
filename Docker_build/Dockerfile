@@ -6,5 +6,5 @@ COPY --chown=nb_user:nb_user change_tcl.py change_tcl.py
 COPY --chown=nb_user:nb_user get_std.py ./Gauss/Sim/LbDelphes/options
 COPY --chown=nb_user:nb_user script.sh script.sh
 RUN chmod +x script.sh
-
+USER root
 ENTRYPOINT ["./script.sh"]

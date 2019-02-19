@@ -10,7 +10,7 @@ if not input_file.exists:
 with open(input_file, "r") as f:
 	param1, param2 = f.readline().split()
 param1 = float(param1)
-param1 = float(param2)
+param2 = float(param2)
 
 temp1, temp2 = (727.2 * 2) / param1, (969.6 * 2) / param2
 fname = './Gauss/Sim/LbDelphes/options/cards/delphes_card_LHCb_EndVelo_Rich2_withEcal.tcl'

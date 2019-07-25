@@ -1,0 +1,14 @@
+## .bashrc
+
+if [ -f "/etc/bashrc" ] ; then
+  source /etc/bashrc
+fi
+
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+
+## setup LHCb environment
+if [ -e "$MYSITEROOT/lhcb/LBSCRIPTS/LBSCRIPTS_v9r2p7/InstallArea/scripts/LbLogin.sh -c x86_64-centos7-gcc7-opt" ] ; then
+   echo "::: sourcing LbLogin..."
+   . $MYSITEROOT/lhcb/LBSCRIPTS/LBSCRIPTS_v9r2p7/InstallArea/scripts/LbLogin.sh -c x86_64-centos7-gcc7-opt
+   echo "::: sourcing LbLogin... [done]"
+fi

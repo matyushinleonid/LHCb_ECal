@@ -34,7 +34,7 @@ def get_std(data, border_modules=1):
     i, sec_name = 0, 'inner'
     df = get_section(data, sec_name, border_modules=border_modules)
 
-    arr = df.xRec - df.xGen - df.thetaXGen * (df.zRec)
+    arr = df.xRec - df.xGen - df.thetaXGen * (df.zRec - df.zGen)
     res = arr.std()
     with open(output_file, "w+") as f:
         f.write(str(res))
